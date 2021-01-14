@@ -11,9 +11,46 @@
 #define PI 3.14159f                            //Definition of the symbol PI
 #include <limits.h>                            //For limits on integer types
 #include <float.h>                             //For limits on floating-point types
+#include <stdbool.h>
 int main2_1(void);
 int main(void)
 {
+    float price = 3.5;
+    int quantity = 0;
+    float totalprice = 0;
+    float discount = 0.05;
+    printf("Please give a purchasednumber:");
+    scanf("%d", &quantity);
+    if(quantity < 0)
+        printf("Invalid purchased number.\n");
+    if(quantity > 10)
+        totalprice = quantity * price * (1 - discount);
+    else
+        totalprice = quantity * price;
+    printf("You should pay $%.2f for %d products.\nAnd that's %d dollors %d cents.\n",
+           totalprice, quantity, (int32_t)totalprice/1, ((int32_t)(totalprice*100))%100);
+    /*
+    int number = 0;
+    printf("Please input a number between 1 to 10:");
+    scanf("%d", &number);
+    if((number > 10) || (number < 1))
+        printf("Invalid number");
+    if(number > 5)
+        printf("Your entered number is greater than 5.\n");
+    if(number < 6)
+        printf("Your entered number is less than 6.\n");
+    
+    int myweight = 169;
+    int yourweight = 170;
+    if(yourweight < myweight)
+        printf("I am heavier than you.\n");
+    if(yourweight > myweight)
+        printf("You are heavier than me.\n");
+    if(yourweight == myweight)
+        printf("We are at same weight.\n");
+    bool result = 5 < 4;
+    printf("The value of result is %d\n", result);
+     
     //test 2_1
     long distance_foot = 0;
     float distance_feet = 0;
@@ -25,7 +62,7 @@ int main(void)
     printf("The distance of is value is %ld foot, %f feet, %f yard\n", distance_foot, distance_feet, distance_yard);
     
     //Program 2.17 Calculating the height of a tree
-   /* long shorty = 0L;
+   long shorty = 0L;
     long lofty = 0L;
     long feet = 0L;
     long inches = 0L;
