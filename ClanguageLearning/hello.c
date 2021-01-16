@@ -12,9 +12,140 @@
 #include <limits.h>                            //For limits on integer types
 #include <float.h>                             //For limits on floating-point types
 #include <stdbool.h>
+#include <string.h>
 int main2_1(void);
 int main(void)
 {
+    //Prmgram 3.7 A confused recuiting policy
+    int age = 0;
+    int unicode = 0;
+    int majcode = 0;
+    //const bool interview = 1;
+    //const bool reject = 0;
+    //bool age_check = 0;
+    bool condition1 = 0;
+    bool condition2 = 0;
+    bool condition3 = 0;
+    bool condition4 = 0;
+    printf("Please enter your age: ");
+    scanf("%d", &age);
+    printf("Please enter your university code: 0 for Yale, 1 for Harvard, 2 for others: ");
+    scanf("%d", &unicode);
+    printf("Please enter your majority code: 0 for chemistry, 1 for economy, 2 for others: ");
+    scanf("%d", &majcode);
+    //result = (age > 25) ? ((unicode == 0) ? interview : (majcode == 0) ? interview : reject) :
+    //((unicode = 0) ? ((majcode = 0) ? interview : reject) : reject));
+    condition1 = ((age > 25) && (majcode == 0) && (unicode != 0));
+    condition2 = ((majcode == 0) && (unicode == 0));
+    condition3 = ((age < 28) && (majcode == 1) && (unicode == 1));  //注意判断相等不要写成赋值
+    condition4 = ((age > 25) && (majcode != 0) && (unicode == 0));
+    if(condition1 || condition2 || condition3 || condition4)
+        printf("Congratulations, you are informed to join our interview!\n");
+    else
+        printf("Sorry to inform you we have to reject you.\n");
+    printf("%d, %d, %d, %d\n", condition1, condition2, condition3, condition4);
+    /*
+    bool yale_graduated = 1;
+    bool harvard_graduted = 1;
+    bool age_above_25 = 1;
+    bool age_below_28 = 1;
+    bool major_chemistry = 1;
+    bool major_enocomy = 1;
+    int age = 0;
+    char university[12];
+    char major[20];
+    const char str1[20] = "yale";
+    const char str2[20] = "harvard";
+    const char str3[20] = "chemistry";
+    const char str4[20] = "economy";
+    printf("Please enter age: ");
+    scanf("%d", &age);
+    printf("Please enter university and major: ");
+    scanf("%s, %s", &university, &major);
+    //gets(&university[12]);
+    //gets(&major[20]);
+    age_above_25 = age > 25;
+    age_below_28 = age < 28;
+    yale_graduated = strcmp(university, &str1[20]);
+    harvard_graduted = strcmp(university, &str2[20]);
+    major_chemistry = strcmp(major, &str3[20]);
+    major_enocomy = strcmp(major, &str4[20]);
+    bool condition1 = age_above_25 && (major_chemistry == 0) && (yale_graduated != 0);
+    bool condition2 = (major_chemistry == 0) && (yale_graduated == 0);
+    bool condition3 = age_below_28 && (major_enocomy == 0) && (harvard_graduted == 0);
+    bool condition4 = (age_above_25 && (major_chemistry == 0) && (yale_graduated == 0));
+    if ((condition1) || (condition2) || (condition3) || (condition4))
+        printf("Congratulations, you are informed to join our interview!\n");
+    else
+        printf("Sorry to inform you we have to reject you.\n");
+    printf("%d, %d\n", age_above_25, age_below_28);
+    printf("%d, %d, %d, %d\n", condition1, condition2, condition3, condition4);
+    printf("%d, %d, %d, %d\n", yale_graduated, harvard_graduted, major_chemistry, major_enocomy);
+    printf("%s, %s", university, major);
+
+    int pet = 0;
+    printf("Please enter the pet number: ");
+    scanf("%d", &pet);
+    printf("You have %d pet%s.\n", pet, pet == 1 ? "" : "s");
+
+    //Program 3.6 Muitlple discount levels
+    float per_price = 3.5;
+    float total_price = 0;
+    float discount = 0;
+    int quantity = 0;
+    printf("Please enter the quantity: ");
+    scanf("%d", &quantity);
+    discount = quantity > 50 ? 0.85 : (quantity > 20 ? 0.9 : (quantity > 10 ? 0.95 : 1));
+    total_price = per_price * quantity * discount;
+    printf("The total price is $%.2f.\n", total_price);
+ 
+    //Program 3.5 Converting uppercase in a better way
+    char letter = 0;
+    bool uppercase_check = 0;
+    bool lowercase_check = 0;
+    printf("Please enter a uppercase letter:");
+    scanf("%c", &letter);
+    uppercase_check = (letter >= 'A' && letter <= 'Z');
+    lowercase_check = (letter >= 'a' && letter <= 'z');
+    letter = letter - 'A' + 'a';
+    if(uppercase_check)
+        printf("The lowercase is %c.\n", letter);
+    else
+        if(lowercase_check)
+            printf("Please use shift key to enter a uppercase letter.\n");
+        else
+            printf("You didn't enter a letter.\n");
+    
+    //Program 3.4 Converting uppercase to lowercase
+    char lowercase = 0;
+    char uppercase = 0;
+    printf("Please enter a uppercase letter:");
+    scanf("%c", &uppercase);
+    if(uppercase >= 'A')
+    {
+       if(uppercase <= 'Z')
+       {
+           lowercase = uppercase - 'A' + 'a';
+           printf("The lowecase of %c is %c.\n", uppercase, lowercase);
+       }
+       else
+           if(uppercase >= 'a')
+           {
+               if(uppercase <= 'z')
+                   printf("Please use shift botton to input a uppercase letter.\n");
+               else
+                   printf("You didn't enter a letter.\n");
+           }
+           else
+           {
+               printf("You didn't enter a letter.\n");
+           }
+    }
+    else
+    {
+        printf("You didn't enter a letter.\n");
+    }
+
     float price = 3.5;
     int quantity = 0;
     float totalprice = 0;
@@ -29,7 +160,7 @@ int main(void)
         totalprice = quantity * price;
     printf("You should pay $%.2f for %d products.\nAnd that's %d dollors %d cents.\n",
            totalprice, quantity, (int32_t)totalprice/1, ((int32_t)(totalprice*100))%100);
-    /*
+
     int number = 0;
     printf("Please input a number between 1 to 10:");
     scanf("%d", &number);
