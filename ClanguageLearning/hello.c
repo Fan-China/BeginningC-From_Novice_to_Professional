@@ -13,9 +13,142 @@
 #include <float.h>                             //For limits on floating-point types
 #include <stdbool.h>
 #include <string.h>
+#include <ctype.h>
 int main2_1(void);
 int main(void)
 {
+    // Program 3.11 A calculator
+    double number1 = 0;
+    double number2 = 0;
+    char operation1 = 0;
+    double result = 0;
+    long remainder = 0;
+    printf("Please enter your formula: ");
+    scanf("%lf %c %lf", &number1, &operation1, &number2);
+    switch (operation1) {
+        case '+':
+            result = number1 + number2;
+            printf("The result == %lf\n", result);
+            break;
+        case '-':
+            result = number1 - number2;
+            printf("The result == %lf\n", result);
+            break;
+        case '*':
+            result = number1 * number2;
+            printf("The result == %lf\n", result);
+            break;
+        case '/':
+            if(number2 == 0)
+                printf("Invaid calculation.\n");      //这里运行了if还会运行else还没弄懂
+            else
+                result = number1 / number2;
+                remainder = (long)number1 % (long)number2;
+                printf("The result == %lf，the remainder == %ld\n", result, remainder);
+            break;                                   //一定不要忘了加break，否则会继续运行！
+        case '%':
+            if(number2 == 0)
+                printf("Invaid calculation.\n");
+            else                                     //这里运行了if还会运行else还没弄懂
+                remainder = (long)number1 % (long)number2;
+                printf("The remainder == %lf\n", result);
+            break;                       //一定不要忘了加break，否则会继续运行！
+        default:
+            printf("A unknown calculation.\n");
+            break;
+    }
+    /*
+    // Program 3.11 A calculator
+    float operand1 = 0;
+    float operand2 = 0;
+    int operation;
+    float result = 0;
+    float remainder = 0;
+    printf("Please enter 1st number: ");
+    scanf("%f", &operand1);
+    printf("Please enter the operation you need: 1 for +, 2 for -, 3 for *, 4 for /: ");
+    scanf("%d", &operation);
+    printf("Please enter 2nd number: ");
+    scanf("%f", &operand2);
+    switch (operation) {
+        case 1:
+            result = operand1 + operand2;
+            break;
+        case 2:
+            result = operand1 - operand2;
+            break;
+        case 3:
+            result = operand1 *  operand2;
+            break;
+        case 4:
+            result = operand1 / operand2;
+            remainder = operand1 - (INT32_C(result)) * operand2;
+            break;
+        default:
+            printf("Your operation is not applicable.\n");
+            break;
+    }
+    printf("The result == %f.\n", result);
+    
+    // Program 3.10 Exercising bitwise operators
+    unsigned int original = 0xABC;
+    unsigned int result = 0;
+    unsigned mask = 0xF;
+    
+    result |= original & mask;
+    printf("result == %X, original == %X.\n", result, original);    // 如果是小写的%x，就会按小写输出十六进制数
+    
+    original >>= 4;
+    result <<= 4;
+    result |= original & mask;
+    printf("result == %X, original == %X.\n", result, original);
+    
+    original >>= 4;
+    result <<= 4;
+    result |= original & mask;
+    printf("result == %X, original == %X.\n", result, original);
+    
+    //Program 3.9 Testing cases
+    char answer = 0;
+    printf("Please enter Y or N: ");
+    scanf("%c", &answer);
+    switch (toupper(answer)) {
+        case 'Y':
+            printf("Your responded in the affirmative.\n");
+            break;
+        case 'N':
+            printf("Your responded in the negative.\n");
+            break;
+        default:
+            printf("You didn't responded orrectly.\n");
+            break;
+    }
+    
+    //Program 3.8 Lucky Lotteries
+    int choice = 0;
+    printf("Please enter a number between 1 to 10: ");
+    scanf("%d" ,&choice);
+    if ((choice > 10) || (choice < 1)) {
+        choice = 11;
+    }
+        switch (choice) {
+            case 1:
+                printf("Congratulations, you win the 1st class award.\n");
+                break;                         //Jump to the end of this block
+            case 2: case 3:
+                printf("Congratulations, you win the 2nd class award.\n");
+                break;
+            case 4: case 5: case 6:
+                printf("Congratulations, you win the 3rd class award.\n");
+                break;
+            case 11:
+                printf("Try a valid value, you waste a choice.\n");
+                break;
+            default:
+                printf("Sorry, hope you be the lucky one next time.\n");
+                break;
+        }
+    
     //Prmgram 3.7 A confused recuiting policy
     int age = 0;
     int unicode = 0;
@@ -44,7 +177,7 @@ int main(void)
     else
         printf("Sorry to inform you we have to reject you.\n");
     printf("%d, %d, %d, %d\n", condition1, condition2, condition3, condition4);
-    /*
+    
     bool yale_graduated = 1;
     bool harvard_graduted = 1;
     bool age_above_25 = 1;
