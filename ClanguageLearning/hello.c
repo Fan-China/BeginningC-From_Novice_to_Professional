@@ -17,6 +17,14 @@
 int main2_1(void);
 int main(void)
 {
+    // Program 4.2 Drawing a box
+    printf("\n**********");
+    for(int count = 1; count <= 8; ++count)
+    {
+        printf("\n*        *");
+    }
+    printf("\n**********\n");
+    /*
     // Program 3.11 A calculator
     double number1 = 0;
     double number2 = 0;
@@ -57,7 +65,7 @@ int main(void)
             printf("A unknown calculation.\n");
             break;
     }
-    /*
+    
     // Program 3.11 A calculator
     float operand1 = 0;
     float operand2 = 0;
