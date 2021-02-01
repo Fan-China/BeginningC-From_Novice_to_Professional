@@ -14,9 +14,78 @@
 #include <stdbool.h>
 #include <string.h>
 #include <ctype.h>
+#include <stdlib.h>                            // For rand() and srand()
+#include <time.h>                              // For time() function
 int main2_1(void);
 int main(void)
 {
+    // Program 4.7 A guessing game
+    int chosen = 0;
+    int guess = 0;
+    int count = 3;
+    int limit = 20;                             // Upper limit for pseudo-random values
+    srand(time(NULL));                          // Use clock value as starting seed
+    chosen = 1 + rand() % limit;                // Random int 1 to limit
+    printf("The chosen number is %d.\n", chosen);
+    printf("This is a guessing game.\n");
+    for ( ; count > 0; count--)
+    {
+        printf( "You have %d tr%s left.\n", count, (count > 1 ? "ies" : "y"));
+        printf("Please chose a number between 1-20: \n");
+        scanf("%d", &guess);
+        if (guess == chosen)
+        {
+            printf("Congratulations! Lucky one!\n");
+            break;
+        }
+        else if ( (guess < 1) || (guess > 20) )
+        {
+            printf("Please enter a valid number.\n");
+        }
+        else
+        {
+            printf("Sorry, %d is wrong, the chosen number is %s than yours.\n",
+                   guess, (chosen > guess) ? "greater" : "less" );
+        }
+    }
+    printf("You used all of your oppotunities.\n");
+    /*
+    // Peogram 4.6 the almost indefinite loop - computing an average
+    char answer = 'N';                                              //注意要用英文输入法！
+    double total = 0.0;
+    double value = 0.0;
+    unsigned int count = 0;
+    printf("This is program calculates the average of the any number of values.\n");
+    for( ; ; )
+    {
+        printf("Please enter a value: ");
+        scanf("%lf", &value);
+        total += value;
+        count++;
+        printf("Do you want to enter another value? (y or n): \n");
+        scanf(" %c", &answer);                                      //为什么一定要空格？
+        if(tolower(answer) == 'n')
+        {
+            break;
+        }
+    }
+    printf("The average of these values is %.2lf.\n", total / count);
+    
+    
+    // Program 4.3 Sum the integers from 1 to a user-specified number
+    unsigned long long sum =0LL;
+    unsigned int count = 0;
+    printf("\nPlease enter the number of integers you want to sum: ");
+    scanf("%d", &count);
+    for(int i = 0; i <= count; sum += i++)
+    {}
+    
+     for(int i = 0; i <= count; i++)
+    {
+        sum += i;
+    }
+    printf("The total number of %d is %llu.\n", count, sum);
+    
     // Program 4.2 Drawing a box
     printf("\n**********");
     for(int count = 1; count <= 8; ++count)
@@ -24,7 +93,7 @@ int main(void)
         printf("\n*        *");
     }
     printf("\n**********\n");
-    /*
+    
     // Program 3.11 A calculator
     double number1 = 0;
     double number2 = 0;
