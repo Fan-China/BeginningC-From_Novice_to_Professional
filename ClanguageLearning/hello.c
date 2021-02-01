@@ -24,7 +24,7 @@ int main(void)
     int guess = 0;
     int count = 3;
     int limit = 20;                             // Upper limit for pseudo-random values
-    srand(time(NULL));                          // Use clock value as starting seed
+    srand(time(NULL));                          // Use clock value as starting seed, 这样做会导致高位丢失
     chosen = 1 + rand() % limit;                // Random int 1 to limit
     printf("The chosen number is %d.\n", chosen);
     printf("This is a guessing game.\n");
@@ -63,7 +63,7 @@ int main(void)
         total += value;
         count++;
         printf("Do you want to enter another value? (y or n): \n");
-        scanf(" %c", &answer);                                      //为什么一定要空格？
+        scanf(" %c", &answer);                                      //为什么一定要空格？试一下切换输入法？
         if(tolower(answer) == 'n')
         {
             break;
