@@ -19,6 +19,19 @@
 int main2_1(void);
 int main(void)
 {
+    // Program 4.8 While programming and summing integers
+    unsigned long sum = 0UL;
+    unsigned int i = 1;
+    unsigned int count = 0;
+    printf("\nPlease enter the number of integers you want to sum: ");
+    scanf(" %u", &count);
+    while( i <= count )
+    {
+        sum += i;
+        i++;
+    }
+    printf("The total of these numbers is %lu.\n", sum);
+    /*
     // Program 4.7 A guessing game
     int chosen = 0;
     int guess = 0;
@@ -49,7 +62,7 @@ int main(void)
         }
     }
     printf("You used all of your oppotunities.\n");
-    /*
+    
     // Peogram 4.6 the almost indefinite loop - computing an average
     char answer = 'N';                                              //注意要用英文输入法！
     double total = 0.0;
