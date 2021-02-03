@@ -19,6 +19,56 @@
 int main2_1(void);
 int main(void)
 {
+    // Program 4.10 Sums of successive integer sequences
+    unsigned int long sum = 0;
+    unsigned int count = 0;
+    printf("Enter the number of integers you want to sum: ");
+    scanf("%u", &count);
+    for (unsigned int i = 1; i <= count; i++)
+    {
+        sum = 0;
+        for (unsigned int j = 1; j <= i; j++)
+        {
+            sum += j;
+        }
+        printf("%u\t%5lu\n", i, sum);
+    }
+    
+    // Program 4.9 Output a box with given width and height
+    const unsigned int MIN_SIZE = 3;
+    unsigned int width = 0;
+    unsigned int height = 0;
+    printf("Please enter the width and height: ");
+    scanf("%u%u", &width, &height);
+    if (width < MIN_SIZE)
+    {
+        printf("PLease enter width cannnot less than %d. Consider %u instead.\n", MIN_SIZE);
+        width = MIN_SIZE;
+    }
+    if (height < MIN_SIZE)
+    {
+        printf("PLease enter values cannnot less than %d. Consider %u instead.\n", MIN_SIZE);
+        height = MIN_SIZE;
+    }
+    for (unsigned int i = 0; i < width ; i++)           //此可作为输出某一行*的标准for模块
+    {
+        printf("*");
+    }
+    for (unsigned int j = 0; j < height - 2; j++)
+    {
+        printf("\n*");
+        for (unsigned int i = 0; i < width - 2; i++)
+        {
+            printf(" ");
+        }
+        printf("*\n");
+    }
+    for (unsigned int i = 0; i < width ; i++)
+    {
+        printf("*");
+    }
+    printf("\n");
+    /*
     // Program 4.8 While programming and summing integers
     unsigned long sum = 0UL;
     unsigned int i = 1;
@@ -31,7 +81,7 @@ int main(void)
         i++;
     }
     printf("The total of these numbers is %lu.\n", sum);
-    /*
+    
     // Program 4.7 A guessing game
     int chosen = 0;
     int guess = 0;
@@ -62,7 +112,7 @@ int main(void)
         }
     }
     printf("You used all of your oppotunities.\n");
-    
+     
     // Peogram 4.6 the almost indefinite loop - computing an average
     char answer = 'N';                                              //注意要用英文输入法！
     double total = 0.0;
@@ -76,7 +126,7 @@ int main(void)
         total += value;
         count++;
         printf("Do you want to enter another value? (y or n): \n");
-        scanf(" %c", &answer);                                      //为什么一定要空格？试一下切换输入法？
+        scanf("%c", &answer);                                      //为什么一定要空格？试一下切换输入法？--实测一定要英文输入法！
         if(tolower(answer) == 'n')
         {
             break;
