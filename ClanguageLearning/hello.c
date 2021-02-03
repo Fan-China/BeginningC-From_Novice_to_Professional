@@ -19,6 +19,26 @@
 int main2_1(void);
 int main(void)
 {
+    // Program 4.11 Sums of integers with a while loop nested in for a loop
+    unsigned long sum = 1UL;
+    unsigned int j = 1U;
+    unsigned int count = 0;
+    printf("Enter the number of integers you want to sum: ");
+    scanf("%u", &count);
+    for (unsigned int i = 1; i <= count; ++i)
+    {
+        sum = 1;
+        j = 1;
+        printf("1");
+        while (j < i)
+        {
+            j++;                                        // j++ 的位置很重要！如果在printf之后输出就错了！
+            sum += j;
+            printf(" + %u", j);
+        }
+        printf(" = %lu\n", sum);
+    }
+    /*
     // Program 4.10 Sums of successive integer sequences
     unsigned int long sum = 0;
     unsigned int count = 0;
@@ -68,7 +88,7 @@ int main(void)
         printf("*");
     }
     printf("\n");
-    /*
+    
     // Program 4.8 While programming and summing integers
     unsigned long sum = 0UL;
     unsigned int i = 1;
