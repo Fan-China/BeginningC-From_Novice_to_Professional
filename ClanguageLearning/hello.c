@@ -19,6 +19,27 @@
 int main2_1(void);
 int main(void)
 {
+    // Program 4.12 Reverting the digits
+    unsigned int number = 0;
+    unsigned int rebmun = 0;
+    unsigned int temp = 0;
+    printf("Enter positive integer: ");
+    scanf("%u", &number);
+    temp = number;
+    if( number > 9 )
+    {
+        do
+        {
+            rebmun = temp % 10;
+            printf("%u", rebmun);
+            temp = temp / 10;
+        }
+        while(temp > 9);
+        printf("%u\n", temp);
+    }
+    else
+        printf("Your number cannnot be reversed.\n");
+    /*
     // Program 4.11 Sums of integers with a while loop nested in for a loop
     unsigned long sum = 1UL;
     unsigned int j = 1U;
@@ -38,7 +59,7 @@ int main(void)
         }
         printf(" = %lu\n", sum);
     }
-    /*
+    
     // Program 4.10 Sums of successive integer sequences
     unsigned int long sum = 0;
     unsigned int count = 0;
