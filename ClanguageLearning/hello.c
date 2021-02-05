@@ -26,6 +26,12 @@ int main(void)
     printf("Enter positive integer: ");
     scanf("%u", &number);
     temp = number;
+    do {
+        rebmun = rebmun * 10 + temp % 10;
+        temp = temp / 10;
+    } while (temp);
+    printf("The reversed number is %u on %u.\n", rebmun, number);
+    /*
     if( number > 9 )
     {
         do
@@ -39,7 +45,7 @@ int main(void)
     }
     else
         printf("Your number cannnot be reversed.\n");
-    /*
+    
     // Program 4.11 Sums of integers with a while loop nested in for a loop
     unsigned long sum = 1UL;
     unsigned int j = 1U;
