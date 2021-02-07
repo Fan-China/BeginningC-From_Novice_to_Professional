@@ -19,6 +19,39 @@
 int main2_1(void);
 int main(void)
 {
+    
+    // 习题 4.1
+    unsigned long int dimension = 0;
+    unsigned long int result = 0;
+    unsigned long int i = 1;
+    unsigned long int j = 1;
+    printf("Enter the dimensions of the table: ");
+    scanf("%lu", &dimension);
+    if(dimension > 0)
+    {
+        do
+        {
+            printf("     \t");
+            printf("j = %lu\t", j++);
+        } while (j <= dimension);
+        printf("\n");
+        for (i; i <= dimension; i++)
+        {
+            printf("i = %lu\t", i);
+            for (j= 1; j <= dimension; j++)
+            {
+                result = i * j;
+                printf("%lu * %lu = %lu\t", i, j, result);
+            }
+            printf("\n");
+        }
+    }
+    else
+    {
+        printf("The input is invalid.\n");
+    }
+    
+    /*
     // Program 4.13 Simple Simon                        // Feb06, 2021. 未完成，待以后完成, 还不能执行预期功能
     char another_game = 'Y';
     const unsigned int DELAY = 1;
@@ -121,7 +154,7 @@ int main(void)
     scanf("%c", &another_game);
         
     }while (another_game == 'Y');
-    /*
+    
     // Program 4.12 Reverting the digits
     unsigned int number = 0;
     unsigned int rebmun = 0;
