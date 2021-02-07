@@ -19,7 +19,25 @@
 int main2_1(void);
 int main(void)
 {
-    
+    // Program 5.3 Averageing ten grades - storing the values the easy way
+    int grades[10];
+    unsigned int count = 10;
+    long sum = 0;
+    float average = 0;
+    printf("Enter the 10 grades: \n");
+    for (unsigned int i = 0; i < count; i++)
+    {
+        printf("%2u: ", i + 1);                             // 占用2个字符宽度，使排列整齐
+        scanf("%3d", &grades[i]);
+        sum += grades[i];
+    }
+    average = (float) sum / 10;                             // would loss accuracy if no (float)
+    for (unsigned int i = 0; i < count; i++)
+    {
+        printf("Grade number%3u is %3d.\n", i+1, grades[i]);// Make text alignment, by number%3u.
+    }
+    printf("The average grades is %.2f.\n", average);       // keep 2 bits float.
+    /*
     // 习题 4.1
     unsigned long int dimension = 0;
     unsigned long int result = 0;
@@ -32,7 +50,7 @@ int main(void)
         printf("     ");
         do
         {
-            printf("%4lu|", j++);                          // 空4位右对齐，若需左对齐是%-4lu
+            printf("%4lu|", j++);                          // 占用4个字符宽，右对齐，若需左对齐是%-4lu
         } while (j <= dimension);
         printf("\n     ");
         do {
@@ -56,7 +74,6 @@ int main(void)
         printf("The input is invalid.\n");
     }
     
-    /*
     // Program 4.13 Simple Simon                        // Feb06, 2021. 未完成，待以后完成, 还不能执行预期功能
     char another_game = 'Y';
     const unsigned int DELAY = 1;
