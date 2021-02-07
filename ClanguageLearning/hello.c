@@ -27,21 +27,26 @@ int main(void)
     unsigned long int j = 1;
     printf("Enter the dimensions of the table: ");
     scanf("%lu", &dimension);
-    if(dimension > 0)
+    if((dimension > 0) && (dimension < 26))                // 实测表格最大25，再大一行放不下
     {
+        printf("     ");
         do
         {
-            printf("     \t");
-            printf("j = %lu\t", j++);
+            printf("%4lu|", j++);                          // 空4位右对齐，若需左对齐是%-4lu
         } while (j <= dimension);
+        printf("\n     ");
+        do {
+            printf("----|");
+            i++;
+        } while (i <= dimension);
         printf("\n");
-        for (i; i <= dimension; i++)
+        for (i = 1; i <= dimension; i++)
         {
-            printf("i = %lu\t", i);
+            printf("%4lu|", i);
             for (j= 1; j <= dimension; j++)
             {
                 result = i * j;
-                printf("%lu * %lu = %lu\t", i, j, result);
+                printf("%4lu|", result);
             }
             printf("\n");
         }
