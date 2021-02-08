@@ -19,6 +19,22 @@
 int main2_1(void);
 int main(void)
 {
+    // Program 5.5 Using the & operator
+    long a = 1L;
+    long b = 2L;
+    long c = 3L;
+    double d = 4.0;
+    double e = 5.0;
+    double f = 6.0;
+    printf("A variable of type long occupies %lu bytes.\n", sizeof(long));
+    printf("Here are the addresses of some variables of type long:\n");
+    printf("The address of a is: %p. The address of b is: %p.\n", &a, &b);      // Once address is distributed, not changed anymore
+    printf("The address of c is: %p.\n", &c);
+    printf("\nA variable of type double occupies %lu bytes.\n", sizeof(double));
+    printf("Here are the addresses of some variables of type double:\n");
+    printf("The address of d is: %p. The address of e is: %p.\n", &d, &e);
+    printf("The address of f is: %p.\n", &f);
+    /*
     // Program 5.3 Averageing ten grades - storing the values the easy way
     int grades[10];
     unsigned int count = 10;
@@ -37,7 +53,7 @@ int main(void)
         printf("Grade number%3u is %3d.\n", i+1, grades[i]);// Make text alignment, by number%3u.
     }
     printf("The average grades is %.2f.\n", average);       // keep 2 bits float.
-    /*
+    
     // 习题 4.1
     unsigned long int dimension = 0;
     unsigned long int result = 0;
