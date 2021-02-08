@@ -19,6 +19,99 @@
 int main2_1(void);
 int main(void)
 {
+    // Program 5.6 Know your hat size - if you dare ……
+    /* ******************************************************
+        * The size array stores hat sizes from 6 1/2 to 7 7/8
+        * Each row defines one character of a size value so
+        * a size is selected by using the same index for each
+        * the three rows. e.g. Index 2 selects 6 3/4.
+     *******************************************************/
+    char size[3][12] =
+    {
+        {'6', '6', '6', '6', '7', '7', '7', '7', '7', '7', '7', '7'},
+        {'1', '5', '3', '7', ' ', '1', '1', '3', '1', '5', '3', '7'},
+        {'2', '8', '4', '8', ' ', '8', '4', '8', '2', '8', '4', '8'}
+    };
+    int headsize[12] =                               // Each int type is distibuted 4 bytes.
+    {164,166,169,172,175,178,181,184,188,191,194,197};
+    float cranium = 0.0f;                             // Head circumerence in decimal inches
+    long your_head = 0;                              // Headsize in whole eighths
+    bool hat_found = false;                         // Indicates when a hat is found to fit
+    printf("Please enter the circumference of your head above ou eyebrows in inches as a decimal value: ");
+    scanf("%f", &cranium);
+    your_head = (long)(cranium * 8.0);       // Covert to whole eighths of a inch
+    /* ******************************************************
+        * Search for a hat size:
+        * Either your head corresponds to the 1st head_size element or
+        * a fit is when your_head is greater than one headsize element
+        * and less than or equal to the next.
+        * In this case the size is the second headsize value.
+     *******************************************************/
+    size_t i = 0;
+    if (your_head == headsize[0])
+    {
+        hat_found = true;
+    }
+    else if (your_head < headsize[0])
+    {
+        hat_found = false;
+    }
+    else
+    {
+        for (i = 0; i < sizeof(headsize)/sizeof(headsize[0])-1; i++)
+        {
+            if (your_head > headsize[i] && your_head <= headsize[i+1])
+            {
+                hat_found = true;
+                break;
+            }
+        }
+    }
+    if (your_head > headsize[11])
+    {
+        hat_found = false;
+    }
+        /*do
+        {
+        if (your_head > headsize[i] && your_head <= headsize[i+1])
+        {
+            hat_found = true;
+            break;
+        }
+        else
+        {
+            i++;
+            hat_found = false;
+        }
+        } while (i < sizeof(headsize)/sizeof(headsize[0])-1);
+        // (i<11);   // Fixed: cannnot be i<12, the if loop would be wrong!
+    }*/                                                         // For loop above is a more efficient way.
+    
+    //printf("%d\n", headsize[12]);                             // Test line, still have value when array size out of range!
+    //printf("%zu\n", sizeof(headsize)/sizeof(headsize[0])-1);  // test line, %zu for sizeof_t type output.
+    if (hat_found)
+    {
+        printf("Your hat size is %c %c%c%c\n", size[0][i+1], size[1][i+1],
+               (size[1][i+1] == ' ') ? ' ' : '/', size[2][i+1]);
+    }
+    else
+    {
+        switch (i)
+        {
+            case 0:
+                printf("You, in technical parlance, are a skinny head. No hat for you, I'm afraid.\n");
+                break;                                          // Use break to jump out of nearest loop;
+            case 11:
+                printf("You, in technical parlance, are a fat head. No hat for you, I'm afraid.\n");
+                break;
+            default:
+                printf("When you see this, please raise a PR.\n");
+                break;
+        }
+    }
+    //printf("%zu, %zu\n", i, sizeof(headsize)/sizeof(headsize[0])-1);        // Test variables
+    
+    /*
     // Program 5.5 Using the & operator
     long a = 1L;
     long b = 2L;
@@ -34,7 +127,7 @@ int main(void)
     printf("Here are the addresses of some variables of type double:\n");
     printf("The address of d is: %p. The address of e is: %p.\n", &d, &e);
     printf("The address of f is: %p.\n", &f);
-    /*
+    
     // Program 5.3 Averageing ten grades - storing the values the easy way
     int grades[10];
     unsigned int count = 10;
