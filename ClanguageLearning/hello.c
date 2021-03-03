@@ -19,13 +19,40 @@
 int main2_1(void);
 int main(void)
 {
+    // Program 5.7 Averaging a variable number of grades
+    size_t nGrades = 0;
+    printf("Enter the number of grades: ");
+    scanf("%zd", &nGrades);
+    long grades[nGrades];
+    long sum = 0L;
+    float average = 0.0f;
+    printf("\nEnter the %zd grades:\n", nGrades);
+    for (size_t i = 0; i < nGrades; i++)
+    {
+        printf("%2zd> ", i + 1);
+        scanf("%ld", &grades[i]);
+        sum += grades[i];
+    }
+    printf("The grades you entered are: \n");
+    for (size_t i = 0; i < nGrades; i++)
+    {
+        printf("Grades[%2zd] = %3ld ",i + 1, grades[i]);
+        if ((i + 1) % 5 == 0)
+        {
+            printf("\n");
+        }
+        average = (float) sum / nGrades;
+    }
+    printf("\nAverage of the %zd grades entered is %.2f\n", nGrades, average);
+    /*
     // Program 5.6 Know your hat size - if you dare ……
-    /* ******************************************************
+    ******************************************************
         * The size array stores hat sizes from 6 1/2 to 7 7/8
         * Each row defines one character of a size value so
         * a size is selected by using the same index for each
         * the three rows. e.g. Index 2 selects 6 3/4.
-     *******************************************************/
+     ******************************************************
+    
     char size[3][12] =
     {
         {'6', '6', '6', '6', '7', '7', '7', '7', '7', '7', '7', '7'},
@@ -40,13 +67,13 @@ int main(void)
     printf("Please enter the circumference of your head above ou eyebrows in inches as a decimal value: ");
     scanf("%f", &cranium);
     your_head = (long)(cranium * 8.0);       // Covert to whole eighths of a inch
-    /* ******************************************************
+    ******************************************************
         * Search for a hat size:
         * Either your head corresponds to the 1st head_size element or
         * a fit is when your_head is greater than one headsize element
         * and less than or equal to the next.
         * In this case the size is the second headsize value.
-     *******************************************************/
+     *******************************************************
     size_t i = 0;
     if (your_head == headsize[0])
     {
@@ -71,7 +98,7 @@ int main(void)
     {
         hat_found = false;
     }
-        /*do
+        do
         {
         if (your_head > headsize[i] && your_head <= headsize[i+1])
         {
@@ -89,7 +116,8 @@ int main(void)
     
     //printf("%d\n", headsize[12]);                             // Test line, still have value when array size out of range!
     //printf("%zu\n", sizeof(headsize)/sizeof(headsize[0])-1);  // test line, %zu for sizeof_t type output.
-    if (hat_found)
+   /*
+   if (hat_found)
     {
         printf("Your hat size is %c %c%c%c\n", size[0][i+1], size[1][i+1],
                (size[1][i+1] == ' ') ? ' ' : '/', size[2][i+1]);
@@ -109,9 +137,10 @@ int main(void)
                 break;
         }
     }
+    
     //printf("%zu, %zu\n", i, sizeof(headsize)/sizeof(headsize[0])-1);        // Test variables
     
-    /*
+    
     // Program 5.5 Using the & operator
     long a = 1L;
     long b = 2L;
