@@ -18,8 +18,23 @@
 #include <time.h>   // For time() function
 int main(void)
 {
-    // Program 6.1 Displaying a string
-    printf("The charatcter \0 is used to terminate a string.\n");
+    // Program 6.2 Lengths of strings
+    char str1[] = "To be or not to be";
+    char str2[] = ",that is a question";
+    unsigned int count = 0; // Stores the string length
+    while (str1[count] != '\0')
+    {
+        count++;
+    }
+    printf("The length of the string \"%s\" is %d characters.\n", str1, count);
+    count = 0;
+    while (str2[count] != '\0')
+    {
+        count++;
+    }
+    printf("The length of the string \"%s\" is %d characters.\n", str2, count);
+    /* // Program 6.1 Displaying a string
+    printf("The charatcter \0 is used to terminate a string.\n"); */
 
     /*     // Test 5.1 A better approach
     const int nValue = 5; // Number of data values
