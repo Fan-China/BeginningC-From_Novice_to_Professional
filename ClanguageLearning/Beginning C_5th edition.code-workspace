@@ -4,5 +4,10 @@
 			"path": "."
 		}
 	],
-	"settings": {}
+	"settings": {
+		"code-runner.runInTerminal": true,
+		"files.associations": {
+			"ctype.h": "c"
+		}
+	}
 }

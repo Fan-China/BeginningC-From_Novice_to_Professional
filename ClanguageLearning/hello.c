@@ -5,21 +5,76 @@
 //  Created by Fan Yang on 2021/1/5.
 //
 
-#include <stdio.h>  // This is a preprocessor directive
+#include <stdio.h> // This is a preprocessor directive
 /* Progam 1.1 Your very First C Program - Displaying Hello World */
 #include "Source.h"
-#define PI 3.14159f                            //Definition of the symbol PI
-#include <limits.h>                            //For limits on integer types
-#include <float.h>                             //For limits on floating-point types
-#include <stdbool.h>                           // For bool, true adn false
+#define PI 3.14159f  //Definition of the symbol PI
+#include <limits.h>  //For limits on integer types
+#include <float.h>   //For limits on floating-point types
+#include <stdbool.h> // For bool, true adn false
 #include <string.h>
 #include <ctype.h>
-#include <stdlib.h>                            // For rand() and srand()
-#include <time.h>                              // For time() function
-int main2_1(void);
+#include <stdlib.h> // For rand() and srand()
+#include <time.h>   // For time() function
 int main(void)
 {
-    int player = 0;                       // Current player number - 1 or 2
+
+    // Test 5.1 A better approach
+    const int nValue = 5; // Number of data values
+    double data[nValue];  // Store data values
+    double reciprocals[nValue];
+    double sum = 0.0; // Stores sum of recipocals
+
+    printf("Enter 5 values separated by spaces: \n");
+    for (int i = 0; i < nValue; i++)
+    {
+        scanf("%lf", &data[i]);
+    }
+    printf("Your entered the values:\n");
+    for (int i = 0; i < nValue; i++)
+    {
+        printf("%15.2lf", data[i]);
+    }
+    printf("\n");
+
+    printf("\nThe values of the reciprocals are: \n");
+    for (int i = 0; i < nValue; i++)
+    {
+        reciprocals[i] = 1.0 / data[i];
+        printf("%15.2lf", reciprocals[i]);
+    }
+    printf("\n");
+
+    for (int i = 0; i < nValue; i++)
+    {
+        sum += reciprocals[i]; // Accumulates sum of reciprocals
+        if (i > 0)
+            printf(" + ");
+        printf("1/%.2lf", data[i]);
+    }
+    printf(" = %lf\n", sum);
+
+    /*  Test 5.1
+   double number = 0.0;
+    double x = 0.0;
+    double index[5] = {0, 0, 0, 0, 0};
+    double sum = 0.0;
+    for (unsigned int i = 0; i < 5; i++)
+    {
+        printf("Please enter the doubled number: \n");
+        scanf("%lf", &number);
+        if (number != 0.0)
+        {
+            x = 1.0 / number;
+            index[i] = x;
+            sum += index[i];
+            number = 0.0;
+            printf("%lf | ", index[i]);
+        }
+    }
+    printf("The sum is %lf\n", sum); */
+
+    /* int player = 0;                       // Current player number - 1 or 2
     int winner = 0;                       // The winning player number
     int choice = 0;                       // Chosen square
     unsigned int row = 0;                 // Row index for a square
@@ -84,8 +139,8 @@ int main(void)
     if(winner)
       printf("\nCongratulations, player %d, YOU ARE THE WINNER!\n", winner);
     else
-      printf("\nHow boring, it is a draw\n");
-    
+      printf("\nHow boring, it is a draw\n"); */
+
     /*
     // Program 5.7 Averaging a variable number of grades
     size_t nGrades = 0;
@@ -180,11 +235,12 @@ int main(void)
         }
         } while (i < sizeof(headsize)/sizeof(headsize[0])-1);
         // (i<11);   // Fixed: cannnot be i<12, the if loop would be wrong!
-    }*/                                                         // For loop above is a more efficient way.
-    
+    }*/
+    // For loop above is a more efficient way.
+
     //printf("%d\n", headsize[12]);                             // Test line, still have value when array size out of range!
     //printf("%zu\n", sizeof(headsize)/sizeof(headsize[0])-1);  // test line, %zu for sizeof_t type output.
-   /*
+    /*
    if (hat_found)
     {
         printf("Your hat size is %c %c%c%c\n", size[0][i+1], size[1][i+1],
