@@ -18,7 +18,27 @@
 #include <time.h>   // For time() function
 int main(void)
 {
-    // Program 6.2 Lengths of strings
+    // Program 6.3 Arrays of strings
+    char str[][70] = {
+        "Computers do what you tell them to do, not what you want them to do.",
+        "When you put something in memory, remember where you put it.",
+        "Never test for a condition you don't know  what to do with."};
+    unsigned int count = 0;                               // Length of a string
+    unsigned int strCount = sizeof(str) / sizeof(str[0]); // Number of strings
+    printf("There are %u strings.\n", strCount);
+
+    // Find the length of the strings
+    for (unsigned int i = 0; i < strCount; i++)
+    {
+        count = 0;
+        while (str[i][count])
+        {
+            count++;
+        }
+        printf("The string:\n  \"%s\"\n contains %u characters.\n", str[i], count);
+    }
+
+    /*     // Program 6.2 Lengths of strings
     char str1[] = "To be or not to be";
     char str2[] = ",that is a question";
     unsigned int count = 0; // Stores the string length
@@ -32,7 +52,8 @@ int main(void)
     {
         count++;
     }
-    printf("The length of the string \"%s\" is %d characters.\n", str2, count);
+    printf("The length of the string \"%s\" is %d characters.\n", str2, count); */
+
     /* // Program 6.1 Displaying a string
     printf("The charatcter \0 is used to terminate a string.\n"); */
 
