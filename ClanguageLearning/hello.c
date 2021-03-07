@@ -18,8 +18,10 @@
 #include <time.h>   // For time() function
 int main(void)
 {
+    // Program 6.1 Displaying a string
+    printf("The charatcter \0 is used to terminate a string.\n");
 
-    // Test 5.1 A better approach
+    /*     // Test 5.1 A better approach
     const int nValue = 5; // Number of data values
     double data[nValue];  // Store data values
     double reciprocals[nValue];
@@ -52,7 +54,7 @@ int main(void)
             printf(" + ");
         printf("1/%.2lf", data[i]);
     }
-    printf(" = %lf\n", sum);
+    printf(" = %lf\n", sum); */
 
     /*  Test 5.1
    double number = 0.0;
