@@ -18,8 +18,25 @@
 #include <time.h>   // For time() function
 int main(void)
 {
+    // Program 7.1 A simple program using pointers
+    int number = 0;      // A variable of type int initialized to 0
+    int* pnumber = NULL; // A pointer that can point to type int
+
+    number = 10;
+    printf("Number's address: %p\n", &number); // Output the address
+    printf("Number's value: %d\n\n", number);  // Output the value
+
+    pnumber = &number; // Store the address of number in pnumber
+
+    printf("pnumber's address: %p\n", (void*)&pnumber);             // Output the address
+    printf("pnumber's size: %zd bytes\n", sizeof(pnumber)); // Output the size
+    printf("pnumber's value: %p\n", pnumber);               // Output the value (an address)
+    printf("value pointed to %d\n", *pnumber);              // Value at the address
+
+    // Skip remained Programs in chapter 6, Jump to chapter 7
+
     // Program 6.3 Arrays of strings
-    char str[][70] = {
+    /*     char str[][70] = {
         "Computers do what you tell them to do, not what you want them to do.",
         "When you put something in memory, remember where you put it.",
         "Never test for a condition you don't know  what to do with."};
@@ -36,7 +53,7 @@ int main(void)
             count++;
         }
         printf("The string:\n  \"%s\"\n contains %u characters.\n", str[i], count);
-    }
+    } */
 
     /*     // Program 6.2 Lengths of strings
     char str1[] = "To be or not to be";
