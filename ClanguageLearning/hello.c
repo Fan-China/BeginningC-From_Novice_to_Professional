@@ -18,7 +18,22 @@
 #include <time.h>   // For time() function
 int main(void)
 {
-    // Program 7.1 A simple program using pointers
+    // Program 7.2 What's the pointer of it all
+    long num1 = 0L;
+    long num2 = 0L;
+    long *pnum = NULL;
+    pnum = &num1;  // Get address of num1
+    *pnum = 2L;    // Set num1 to 2
+    ++num2;        // Icrement num2
+    num2 += *pnum; // Add num1 to num2
+
+    pnum = &num2; // Get address of num2
+    ++*pnum;      // INcrement num2 indirectly
+
+    printf(" num1 = %ld\n num2 = %ld\n *pnum = %ld\n *pnum + num2 = %ld\n",
+           num1, num2, *pnum, (*pnum + num2));
+
+    /*     // Program 7.1 A simple program using pointers
     int number = 0;      // A variable of type int initialized to 0
     int* pnumber = NULL; // A pointer that can point to type int
 
@@ -32,7 +47,7 @@ int main(void)
     printf("pnumber's size: %zd bytes\n", sizeof(pnumber)); // Output the size
     printf("pnumber's value: %p\n", pnumber);               // Output the value (an address)
     printf("value pointed to %d\n", *pnumber);              // Value at the address
-
+ */
     // Skip remained Programs in chapter 6, Jump to chapter 7
 
     // Program 6.3 Arrays of strings
