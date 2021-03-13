@@ -18,7 +18,17 @@
 #include <time.h>   // For time() function
 int main(void)
 {
-    // Program 7.2 What's the pointer of it all
+    // Program 7.3 Using pointer arguments to scanf_s
+    #define _STDC_WANT_LIB_EXT1_ 1
+    int value = 0;
+    int *pvalue = &value;   // Set pointer to refer value
+
+    printf("Input an integer: ");
+    scanf_s(" %d", pvalue); // Read into value via the pointer, invalid in C99
+
+    printf("You entered %d.\n", value); // Output the value entered
+
+    /*     // Program 7.2 What's the pointer of it all
     long num1 = 0L;
     long num2 = 0L;
     long *pnum = NULL;
@@ -31,7 +41,7 @@ int main(void)
     ++*pnum;      // INcrement num2 indirectly
 
     printf(" num1 = %ld\n num2 = %ld\n *pnum = %ld\n *pnum + num2 = %ld\n",
-           num1, num2, *pnum, (*pnum + num2));
+           num1, num2, *pnum, (*pnum + num2)); */
 
     /*     // Program 7.1 A simple program using pointers
     int number = 0;      // A variable of type int initialized to 0
